@@ -1,0 +1,19 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100 # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    autoserve_controller:
+      type: position_controller/JointPositionController
+
+autoserve_controller:
+  ros__parameters:
+    joints:
+      - base2plate_1
+      - base2plate_2
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
