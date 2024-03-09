@@ -35,78 +35,64 @@
   <!-- Caster Wheels -->
   <gazebo reference="base_link">
     <material>${base_link}</material>
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>1.0</maxVel>
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+    <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="base_footprint">
     <material>${base_link}</material>
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>1.0</maxVel>
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+    <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="depth_camera_1">
     <material>${depth_cam}</material>
     <mu1>0.1</mu1>
     <mu2>0.1</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>1.0</maxVel>
+    <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="depth_camera_2">
     <material>${depth_cam}</material>
     <mu1>0.1</mu1>
     <mu2>0.1</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>1.0</maxVel>
+    <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="ydlidar">
     <material>${lidar}</material>
     <mu1>0.1</mu1>
     <mu2>0.1</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>1.0</maxVel>
+    <gravity>true</gravity>
+  </gazebo>
+
+  <gazebo reference="imu">
+    <material>${imu}</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="plate_1">
     <material>${plate}</material>
-    <mu1>10</mu1>
-    <mu2>10</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>1.0</maxVel>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="plate_2">
     <material>${plate}</material>
-    <mu1>10</mu1>
-    <mu2>10</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>1.0</maxVel>
+    <mu1>10.0</mu1>
+    <mu2>10.0</mu2>
+    <gravity>true</gravity>
   </gazebo>
     
   <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-      <robot_param>robot_description</robot_param>
-      <robot_param_node>robot_state_publisher</robot_param_node>
+      <!-- <robot_param>robot_description</robot_param>
+      <robot_param_node>robot_state_publisher</robot_param_node> -->
       <parameters>$(find autoserve_controller)/config/autoserve_controllers.yaml</parameters>
     </plugin>
   </gazebo>
@@ -130,12 +116,12 @@
 
       <!-- output -->
       <publish_odom>true</publish_odom>
-      <publish_odom_tf>true</publish_odom_tf>
-      <publish_wheel_tf>true</publish_wheel_tf>
+      <publish_odom_tf>false</publish_odom_tf>
+      <publish_wheel_tf>false</publish_wheel_tf>
 
       <odometry_topic>odom</odometry_topic>
       <odometry_frame>odom</odometry_frame>
-      <robot_base_frame>base_footprint</robot_base_frame>
+      <robot_base_frame>base_link</robot_base_frame>
 
     </plugin>
   </gazebo>

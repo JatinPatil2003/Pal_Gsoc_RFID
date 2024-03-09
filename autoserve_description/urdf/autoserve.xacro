@@ -3,16 +3,16 @@
 
 <xacro:include filename="$(find autoserve_description)/urdf/materials.xacro" />
 <xacro:include filename="$(find autoserve_description)/urdf/autoserve_gazebo.xacro" />
-<xacro:include filename="$(find autoserve_description)/urdf/autoserve_ros2_control.xacro" />
+<!-- <xacro:include filename="$(find autoserve_description)/urdf/autoserve_ros2_control.xacro" /> -->
 <xacro:include filename="$(find autoserve_description)/urdf/autoserve.trans" />
 
 <link name="base_footprint">
-  <collision>
-    <origin xyz="0.0 0.0 0.006" rpy="0 0 0"/>
+  <!-- <collision>
+    <origin xyz="0.0 0.0 0.05" rpy="0 0 0"/>
     <geometry>
-      <box size="0.40 0.20 0.01" />
+      <box size="0.45 0.20 0.01" />
     </geometry>
-  </collision>
+  </collision> -->
 </link>
 
 <link name="base_link">
@@ -28,10 +28,16 @@
     </geometry>
     <material name="plastic_translucent_matte_green"/>
   </visual>
-  <collision>
+  <!-- <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://autoserve_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision> -->
+  <collision>
+    <origin xyz="0.0 0.0 0.008" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.40 0.20 0.01" />
     </geometry>
   </collision>
 </link>
@@ -105,6 +111,27 @@
     </geometry>
   </collision>
 </link>
+
+<!-- <link name="depth_camera_2">
+  <inertial>
+    <origin xyz="0.01195115490287238 0.02274721773464422 -6.09413650859425e-05" rpy="0 0 0"/>
+    <mass value="0.35132131581082054"/>
+    <inertia ixx="0.000227" iyy="3.2e-05" izz="0.000229" ixy="-1e-06" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.105108 0.0 -0.771167" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://autoserve_description/meshes/depth_camera_v1_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="plastic_translucent_matte_red"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.105108 0.0 -0.771167" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://autoserve_description/meshes/depth_camera_v1_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link> -->
 
 <link name="depth_camera_2">
   <inertial>
@@ -229,21 +256,27 @@
   <child link="depth_camera_1"/>
 </joint>
 
-<joint name="base2camera_2" type="fixed">
+<!-- <joint name="base2camera_2" type="fixed">
   <origin xyz="0.105108 -0.0 0.771167" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="depth_camera_2"/>
+</joint> -->
+
+<joint name="base2camera_2" type="fixed">
+  <origin xyz="0.105108 -0.0 1.3" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="depth_camera_2"/>
 </joint>
 
 <joint name="base2rightw" type="continuous">
-  <origin xyz="0.0 -0.1659 0.05" rpy="0 0 0"/>
+  <origin xyz="0.0 -0.17 0.05" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="right_wheel"/>
   <axis xyz="-0.0 1.0 -0.0"/>
 </joint>
 
 <joint name="base2leftw" type="continuous">
-  <origin xyz="0.0 0.1659 0.05" rpy="0 0 0"/>
+  <origin xyz="0.0 0.17 0.05" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="left_wheel"/>
   <axis xyz="0.0 1.0 0.0"/>

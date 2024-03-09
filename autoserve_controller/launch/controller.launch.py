@@ -19,7 +19,16 @@ def generate_launch_description():
     plate_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["bumperbot_controller", 
+        arguments=["autoserve_plate_controller", 
+                   "--controller-manager", 
+                   "/controller_manager"
+        ],
+    )
+
+    drive_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["autoserve_controller", 
                    "--controller-manager", 
                    "/controller_manager"
         ],
@@ -29,5 +38,6 @@ def generate_launch_description():
         [
             joint_state_broadcaster_spawner,
             plate_controller_spawner,
+            drive_controller_spawner,
         ]
     )
