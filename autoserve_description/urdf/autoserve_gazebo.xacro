@@ -2,7 +2,7 @@
 
 <robot name="autonav" xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:property name="base_link" value="Gazebo/FlatBlack" />
+<xacro:property name="base_link" value="Gazebo/Red" />
 <xacro:property name="wheels" value="Gazebo/Black" />
 <xacro:property name="imu" value="Gazebo/PurpleGlow" />
 <xacro:property name="lidar" value="Gazebo/BlueGlow" />
@@ -12,87 +12,78 @@
   <!-- Wheels -->
   <gazebo reference="left_wheel">
     <material>${wheels}</material>
-    <mu1>1000000000000000.0</mu1>
-    <mu2>1000000000000000.0</mu2>
-    <kp>1000000000000.0</kp>
-    <kd>10.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-    <fdir1>1 0 0</fdir1>
+    <mu1>1000.0</mu1>
+    <mu2>1000.0</mu2>
+    <maxContacts>1</maxContacts>
+    <selfCollide>true</selfCollide>
+    <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="right_wheel">
     <material>${wheels}</material>
-    <mu1>1000000000000000.0</mu1>
-    <mu2>1000000000000000.0</mu2>
-    <kp>1000000000000.0</kp>
-    <kd>10.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
-    <fdir1>1 0 0</fdir1>
+    <mu1>1000.0</mu1>
+    <mu2>1000.0</mu2>
+    <maxContacts>1</maxContacts>
+    <selfCollide>true</selfCollide>
+    <gravity>true</gravity>
   </gazebo>
     
   <!-- Caster Wheels -->
   <gazebo reference="base_link">
     <material>${base_link}</material>
-    <mu1>0.01</mu1>
-    <mu2>0.01</mu2>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <maxContacts>1</maxContacts>
+    <selfCollide>true</selfCollide>
     <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="base_footprint">
-    <material>${base_link}</material>
-    <mu1>0.01</mu1>
-    <mu2>0.01</mu2>
-    <gravity>true</gravity>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <maxContacts>1</maxContacts>
   </gazebo>
 
   <gazebo reference="depth_camera_1">
     <material>${depth_cam}</material>
     <mu1>0.1</mu1>
     <mu2>0.1</mu2>
-    <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="depth_camera_2">
     <material>${depth_cam}</material>
     <mu1>0.1</mu1>
     <mu2>0.1</mu2>
-    <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="ydlidar">
     <material>${lidar}</material>
     <mu1>0.1</mu1>
     <mu2>0.1</mu2>
-    <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="imu">
     <material>${imu}</material>
     <mu1>0.1</mu1>
     <mu2>0.1</mu2>
-    <gravity>true</gravity>
   </gazebo>
 
   <gazebo reference="plate_1">
     <material>${plate}</material>
-    <mu1>10.0</mu1>
-    <mu2>10.0</mu2>
-    <gravity>true</gravity>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
   </gazebo>
 
   <gazebo reference="plate_2">
     <material>${plate}</material>
-    <mu1>10.0</mu1>
-    <mu2>10.0</mu2>
-    <gravity>true</gravity>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
   </gazebo>
     
   <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-      <!-- <robot_param>robot_description</robot_param>
-      <robot_param_node>robot_state_publisher</robot_param_node> -->
+      <robot_param>robot_description</robot_param>
+      <robot_param_node>robot_state_publisher</robot_param_node>
       <parameters>$(find autoserve_controller)/config/autoserve_controllers.yaml</parameters>
     </plugin>
   </gazebo>
@@ -100,28 +91,23 @@
   <gazebo>
     <plugin name="diff_drive_control" filename="libgazebo_ros_diff_drive.so">
 
-      <!-- Update rate in Hz -->
       <update_rate>50</update_rate>
 
-      <!-- wheels -->
       <left_joint>base2leftw</left_joint>
       <right_joint>base2rightw</right_joint>
 
-      <!-- kinematics -->
       <wheel_separation>0.34</wheel_separation>
       <wheel_diameter>0.1</wheel_diameter>
 
-      <!-- input -->
       <command_topic>cmd_vel</command_topic>
 
-      <!-- output -->
       <publish_odom>true</publish_odom>
-      <publish_odom_tf>false</publish_odom_tf>
-      <publish_wheel_tf>false</publish_wheel_tf>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>true</publish_wheel_tf>
 
       <odometry_topic>odom</odometry_topic>
       <odometry_frame>odom</odometry_frame>
-      <robot_base_frame>base_link</robot_base_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
 
     </plugin>
   </gazebo>
@@ -156,7 +142,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.10</min>
+          <min>0.5</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -180,7 +166,7 @@
         <!-- Clip intensity values so all are above 100, optional -->
         <min_intensity>100.0</min_intensity>
         <!-- Frame id for header of output, defaults to sensor's parent link name -->
-        <frame_name>lidar</frame_name>
+        <frame_name>ydlidar</frame_name>
       </plugin>
     </sensor>
   </gazebo>

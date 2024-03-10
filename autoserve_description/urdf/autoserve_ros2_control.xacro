@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="autoserve_ros2">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="autoserve">
 
-    <ros2_control name="RobotSystem" type="system">
+    <ros2_control name="autoserve" type="system">
 
         <hardware>
             <plugin>gazebo_ros2_control/GazeboSystem</plugin>
@@ -23,10 +23,10 @@
             <state_interface name="position" />
         </joint>
 
-        <joint name="base2leftw">
+        <!-- <joint name="base2leftw">
             <command_interface name="velocity">
-              <param name="min">-1</param>
-              <param name="max">1</param>
+              <param name="min">-10</param>
+              <param name="max">10</param>
             </command_interface>
             <state_interface name="position" />
             <state_interface name="velocity" />
@@ -34,12 +34,12 @@
 
         <joint name="base2rightw">
             <command_interface name="velocity">
-              <param name="min">-1</param>
-              <param name="max">1</param>
+              <param name="min">-10</param>
+              <param name="max">10</param>
             </command_interface>
             <state_interface name="position" />
             <state_interface name="velocity" />
-        </joint>
+        </joint> -->
         
     </ros2_control>
 

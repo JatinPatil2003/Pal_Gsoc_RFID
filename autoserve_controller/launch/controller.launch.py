@@ -38,6 +38,6 @@ def generate_launch_description():
         [
             joint_state_broadcaster_spawner,
             plate_controller_spawner,
-            drive_controller_spawner,
+            # drive_controller_spawner,
         ]
     )

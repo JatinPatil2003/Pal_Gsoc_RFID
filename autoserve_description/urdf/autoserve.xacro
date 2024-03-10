@@ -7,12 +7,12 @@
 <xacro:include filename="$(find autoserve_description)/urdf/autoserve.trans" />
 
 <link name="base_footprint">
-  <!-- <collision>
-    <origin xyz="0.0 0.0 0.05" rpy="0 0 0"/>
+  <collision>
+    <origin xyz="0.0 0.0 0.006" rpy="0 0 0"/>
     <geometry>
       <box size="0.45 0.20 0.01" />
     </geometry>
-  </collision> -->
+  </collision>
 </link>
 
 <link name="base_link">
@@ -28,18 +28,18 @@
     </geometry>
     <material name="plastic_translucent_matte_green"/>
   </visual>
-  <!-- <collision>
+  <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://autoserve_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-  </collision> -->
-  <collision>
-    <origin xyz="0.0 0.0 0.008" rpy="0 0 0"/>
+  </collision>
+  <!-- <collision>
+    <origin xyz="0.0 0.0 0.007" rpy="0 0 0"/>
     <geometry>
       <box size="0.40 0.20 0.01" />
     </geometry>
-  </collision>
+  </collision> -->
 </link>
 
 <joint name="footprint2baselink" type="fixed">
@@ -157,7 +157,7 @@
 <link name="right_wheel">
   <inertial>
     <origin xyz="1.4446033464149508e-16 -0.015000000000000263 2.0816681711721685e-16" rpy="0 0 0"/>
-    <mass value="0.028210189769456086"/>
+    <mass value="1.528210189769456086"/>
     <inertia ixx="2e-05" iyy="3.5e-05" izz="2e-05" ixy="-0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
   <visual>
@@ -178,7 +178,7 @@
 <link name="left_wheel">
   <inertial>
     <origin xyz="1.6623077439054263e-16 0.01500000000000018 1.3877787807814457e-16" rpy="0 0 0"/>
-    <mass value="0.028210189769456086"/>
+    <mass value="1.528210189769456086"/>
     <inertia ixx="2e-05" iyy="3.5e-05" izz="2e-05" ixy="0.0" iyz="0.0" ixz="0.0"/>
   </inertial>
   <visual>
@@ -269,14 +269,14 @@
 </joint>
 
 <joint name="base2rightw" type="continuous">
-  <origin xyz="0.0 -0.17 0.05" rpy="0 0 0"/>
+  <origin xyz="0.0 -0.1659 0.05" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="right_wheel"/>
-  <axis xyz="-0.0 1.0 -0.0"/>
+  <axis xyz="-0.0 1.0 0.0"/>
 </joint>
 
 <joint name="base2leftw" type="continuous">
-  <origin xyz="0.0 0.17 0.05" rpy="0 0 0"/>
+  <origin xyz="0.0 0.1659 0.05" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="left_wheel"/>
   <axis xyz="0.0 1.0 0.0"/>
