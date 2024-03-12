@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <robot name="autoserve" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
-<!-- <transmission name="base2rightw_tran">
+<transmission name="base2rightw_tran">
   <type>transmission_interface/SimpleTransmission</type>
   <joint name="base2rightw">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
   <actuator name="base2rightw_actr">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
@@ -15,13 +15,13 @@
 <transmission name="base2leftw_tran">
   <type>transmission_interface/SimpleTransmission</type>
   <joint name="base2leftw">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
   <actuator name="base2leftw_actr">
-    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
-</transmission> -->
+</transmission>
 
 <transmission name="base2plate_1_tran">
   <type>transmission_interface/SimpleTransmission</type>

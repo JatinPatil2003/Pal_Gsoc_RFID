@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot name="autonav" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="autoserve" xmlns:xacro="http://ros.org/wiki/xacro">
 
 <xacro:property name="base_link" value="Gazebo/Red" />
 <xacro:property name="wheels" value="Gazebo/Black" />
@@ -80,13 +80,13 @@
     <mu2>0.1</mu2>
   </gazebo>
     
-  <gazebo>
+  <!-- <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
       <robot_param>robot_description</robot_param>
       <robot_param_node>robot_state_publisher</robot_param_node>
       <parameters>$(find autoserve_controller)/config/autoserve_controllers.yaml</parameters>
     </plugin>
-  </gazebo>
+  </gazebo> -->
 
   <gazebo>
     <plugin name="diff_drive_control" filename="libgazebo_ros_diff_drive.so">
@@ -148,24 +148,16 @@
         </range>
         <noise>
           <type>gaussian</type>
-          <!-- Noise parameters based on published spec for Hokuyo laser
-               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
-               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
-               reading. -->
           <mean>0.0</mean>
           <stddev>0.01</stddev>
         </noise>
       </ray>
       <plugin name="my_ray_sensor_plugin" filename="libgazebo_ros_ray_sensor.so">
         <ros>
-          <!-- Configure namespace and remap to publish to /ray/pointcloud2 -->
           <remapping>~/out:=scan</remapping>
         </ros>
-        <!-- Output as a PointCloud2, see above for other types -->
         <output_type>sensor_msgs/LaserScan</output_type>
-        <!-- Clip intensity values so all are above 100, optional -->
         <min_intensity>100.0</min_intensity>
-        <!-- Frame id for header of output, defaults to sensor's parent link name -->
         <frame_name>ydlidar</frame_name>
       </plugin>
     </sensor>
@@ -245,6 +237,6 @@
         <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>
-  </gazebo>
+  </gazebo> 
 
 </robot>
