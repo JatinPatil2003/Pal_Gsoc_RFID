@@ -21,7 +21,7 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     autoserve_gazebo_dir = get_package_share_directory("autoserve_gazebo")
-    autonav_gazebo_dir = get_package_share_directory("autonav_gazebo")
+    # autonav_gazebo_dir = get_package_share_directory("autonav_gazebo")
     gazebo_ros_dir = get_package_share_directory("gazebo_ros")
     autoserve_description_share = os.path.join(
         get_package_prefix("autoserve_description"), "share"

@@ -3,14 +3,13 @@
 
 <xacro:include filename="$(find autoserve_description)/urdf/materials.xacro" />
 <xacro:include filename="$(find autoserve_description)/urdf/autoserve_gazebo.xacro" />
-<xacro:include filename="$(find autoserve_description)/urdf/autoserve_ros2_control.xacro" />
 <xacro:include filename="$(find autoserve_description)/urdf/autoserve.trans" />
 
 <link name="base_footprint">
   <!-- <collision>
-    <origin xyz="0.0 0.0 0.0055" rpy="0 0 0"/>
+    <origin xyz="0.0 0.0 0.003" rpy="0 0 0"/>
     <geometry>
-      <box size="0.45 0.20 0.01" />
+      <box size="0.4 0.20 0.005" />
     </geometry>
   </collision> -->
 </link>
@@ -28,16 +27,16 @@
     </geometry>
     <material name="plastic_translucent_matte_green"/>
   </visual>
-  <!-- <collision>
+  <collision>
     <origin xyz="0 0 0" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://autoserve_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
     </geometry>
-  </collision> -->
+  </collision>
   <collision>
-    <origin xyz="0.0 0.0 0.006" rpy="0 0 0"/>
+    <origin xyz="0.0 0.0 0.003" rpy="0 0 0"/>
     <geometry>
-      <box size="0.45 0.20 0.01" />
+      <box size="0.45 0.20 0.005" />
     </geometry>
   </collision>
 </link>
@@ -72,21 +71,21 @@
 
 <link name="ydlidar">
   <inertial>
-    <origin xyz="-2.7755575615628914e-17 -1.7308971658813632e-16 -0.012774955364728169" rpy="0 0 0"/>
-    <mass value="0.09117240534114449"/>
-    <inertia ixx="2.9e-05" iyy="2.9e-05" izz="4.9e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+    <origin xyz="-0.030294099570319616 0.03099999999999979 0.037701142222791084" rpy="0 0 0"/>
+    <mass value="1.1515616542314233"/>
+    <inertia ixx="0.000489" iyy="0.000861" izz="0.000987" ixy="-0.0" iyz="0.0" ixz="-0.000148"/>
   </inertial>
   <visual>
-    <origin xyz="-0.1632 0.0 -0.267" rpy="0 0 0"/>
+    <origin xyz="-0.162 0.0 -0.25" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://autoserve_description/meshes/ydlidar_v1_1.stl" scale="0.00102 0.00102 0.00102"/>
+      <mesh filename="package://autoserve_description/meshes/yd_lidar_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="plastic_translucent_matte_blue"/>
   </visual>
   <collision>
-    <origin xyz="-0.1632 0.0 -0.267" rpy="0 0 0"/>
+    <origin xyz="-0.162 0.0 -0.25" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://autoserve_description/meshes/ydlidar_v1_1.stl" scale="0.00102 0.00102 0.00102"/>
+      <mesh filename="package://autoserve_description/meshes/yd_lidar_v1_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -245,13 +244,13 @@
 </joint>
 
 <joint name="base2lidar" type="fixed">
-  <origin xyz="0.16 0.0 0.262" rpy="0 0 0"/>
+  <origin xyz="0.162 0.0 0.25" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="ydlidar"/>
 </joint>
 
 <joint name="base2camera_1" type="fixed">
-  <origin xyz="0.2 -0.0 0.1755" rpy="0 0 0"/>
+  <origin xyz="0.2 -0.0 0.1705" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="depth_camera_1"/>
 </joint>
