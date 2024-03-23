@@ -90,7 +90,7 @@
   </collision>
 </link>
 
-<link name="depth_camera_1">
+<link name="camera_link">
   <inertial>
     <origin xyz="0.011951472788559625 0.022747274204167237 -6.086448440437153e-05" rpy="0 0 0"/>
     <mass value="0.35132131581082054"/>
@@ -110,6 +110,15 @@
     </geometry>
   </collision>
 </link>
+
+<link name="camera_link_optical"/>
+
+<joint name="camera2camera_1" type="fixed">
+  <parent link="camera_link"/>
+  <child link="camera_link_optical"/>
+  <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
+  <axis xyz="0 0 0"/>
+</joint>
 
 <link name="depth_camera_2">
   <inertial>
@@ -252,7 +261,7 @@
 <joint name="base2camera_1" type="fixed">
   <origin xyz="0.2 -0.0 0.1705" rpy="0 0 0"/>
   <parent link="base_link"/>
-  <child link="depth_camera_1"/>
+  <child link="camera_link"/>
 </joint>
 
 <!-- <joint name="base2camera_2" type="fixed">

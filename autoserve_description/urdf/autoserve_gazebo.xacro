@@ -142,7 +142,7 @@
           </horizontal>
         </scan>
         <range>
-          <min>0.5</min>
+          <min>0.3</min>
           <max>30.0</max>
           <resolution>0.01</resolution>
         </range>
@@ -163,12 +163,12 @@
     </sensor>
   </gazebo>
 
-  <gazebo reference="depth_camera_1">
-    <sensor name="camera_1" type="depth">
+  <gazebo reference="camera_link">
+    <sensor name="camera" type="depth">
       <pose> 0 0 0 0 0 0</pose>
       <visualize>true</visualize>
       <update_rate>60.0</update_rate>
-      <camera name="depth_camera_1">
+      <camera name="camera_link">
         <horizontal_fov>1.047198</horizontal_fov>
         <image>
           <width>640</width>
@@ -177,16 +177,16 @@
         </image>
         <clip>
           <near>0.05</near>
-          <far>30</far>
+          <far>50</far>
         </clip>
       </camera>
       <plugin name="depth_camera_controller_1" filename="libgazebo_ros_camera.so">
         <baseline>0.2</baseline>
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
-        <frame_name>depth_camera_1</frame_name>
+        <frame_name>camera_link_optical</frame_name>
         <pointCloudCutoff>0.1</pointCloudCutoff>
-        <pointCloudCutoffMax>10.0</pointCloudCutoffMax>
+        <pointCloudCutoffMax>50.0</pointCloudCutoffMax>
         <distortionK1>0</distortionK1>
         <distortionK2>0</distortionK2>
         <distortionK3>0</distortionK3>
