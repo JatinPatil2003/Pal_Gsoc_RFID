@@ -48,7 +48,7 @@ COPY /autoserve_perception /autoserve_perception
 
 WORKDIR /colcon_ws
 
-RUN source /opt/ros/${ROS_DISTRO}/setup.bash \
+RUN source /opt/ros/${ROS_DISTRO}/setup.sh \
     colcon build --symlink-install
 
 COPY ./autoserve_entrypoint.bash /autoserve_entrypoint.bash
