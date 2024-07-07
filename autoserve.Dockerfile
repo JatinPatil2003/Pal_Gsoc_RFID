@@ -28,7 +28,8 @@ RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-turtlebot3-gazebo \
     ros-${ROS_DISTRO}-gazebo* \
     ros-${ROS_DISTRO}-rmw-cyclonedds-cpp \
-    ros-${ROS_DISTRO}-foxglove-bridge
+    ros-${ROS_DISTRO}-foxglove-bridge \
+    ros-${ROS_DISTRO}-octomap*
 
 WORKDIR /colcon_ws/src
 
@@ -49,7 +50,7 @@ COPY /autoserve_perception /autoserve_perception
 WORKDIR /colcon_ws
 
 RUN source /opt/ros/${ROS_DISTRO}/setup.sh \
-    colcon build --symlink-install
+    && colcon build --symlink-install
 
 COPY ./autoserve_entrypoint.bash /autoserve_entrypoint.bash
 
