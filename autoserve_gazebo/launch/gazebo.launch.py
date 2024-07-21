@@ -27,12 +27,11 @@ def generate_launch_description():
     autoserve_description_share = os.path.join(
         get_package_prefix("autoserve_description"), "share"
     )
-
+    gazebo_models_path = os.path.join(autoserve_gazebo_dir, 'models')
     if 'GAZEBO_MODEL_PATH' in os.environ:
-        gazebo_models_path = os.path.join(autoserve_gazebo_dir, 'models')
         os.environ['GAZEBO_MODEL_PATH'] = gazebo_models_path
     else:
-        os.environ['GAZEBO_MODEL_PATH'] =  gazebo_models_path + "/models"
+        os.environ['GAZEBO_MODEL_PATH'] =  gazebo_models_path
 
     env_var = SetEnvironmentVariable("GAZEBO_MODEL_PATH", autoserve_description_share)
 

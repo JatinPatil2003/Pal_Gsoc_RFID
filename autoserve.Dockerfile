@@ -1,6 +1,9 @@
+# Base stage: Install dependencies
 FROM ros:humble
 
 ENV ROS_DISTRO="humble"
+
+SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-desktop \
@@ -31,28 +34,50 @@ RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-foxglove-bridge \
     ros-${ROS_DISTRO}-octomap*
 
-WORKDIR /colcon_ws/src
+RUN apt-get update && apt-get install -y \
+    gazebo \
+    ros-humble-gazebo-ros \
+    ros-${ROS_DISTRO}-desktop-full
 
-COPY /autoserve_3dmapping /autoserve_3dmapping
+RUN apt-get update && apt upgrade -y
 
-COPY /autoserve_controller /autoserve_controller
+RUN apt-get update && apt-get install -y \
+    gazebo
 
-COPY /autoserve_description /autoserve_description
+# Build stage: Copy source code and build
+# FROM base as build
 
-COPY /autoserve_gazebo /autoserve_gazebo
-
-COPY /autoserve_mapping /autoserve_mapping
-
-COPY /autoserve_navigation /autoserve_navigation
-
-COPY /autoserve_perception /autoserve_perception
+COPY /autoserve_3dmapping /colcon_ws/src/autoserve_3dmapping
+COPY /autoserve_controller /colcon_ws/src/autoserve_controller
+COPY /autoserve_description /colcon_ws/src/autoserve_description
+COPY /autoserve_gazebo /colcon_ws/src/autoserve_gazebo
+COPY /autoserve_mapping /colcon_ws/src/autoserve_mapping
+COPY /autoserve_navigation /colcon_ws/src/autoserve_navigation
+COPY /autoserve_perception /colcon_ws/src/autoserve_perception
 
 WORKDIR /colcon_ws
 
-RUN bash -c "source /opt/ros/${ROS_DISTRO}/setup.sh \
-    && colcon build --symlink-install"
+RUN source /opt/ros/humble/setup.sh \
+    && colcon build --executor sequential
+
+# Runtime stage: Create the final image
+# FROM ros:humble as runtime
+
+# ENV ROS_DISTRO="humble"
+
+# COPY --from=build /colcon_ws /colcon_ws
+# COPY --from=base /opt/ros/${ROS_DISTRO} /opt/ros/${ROS_DISTRO}
+# COPY --from=base /etc/ros /etc/ros
 
 COPY ./autoserve_entrypoint.bash /autoserve_entrypoint.bash
+
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /etc/bash.bashrc
+
+RUN echo "source /usr/share/gazebo/setup.bash" >> /etc/bash.bashrc
+
+RUN echo "source /colcon_ws/install/setup.bash" >> /etc/bash.bashrc
+
+RUN echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> /etc/bash.bashrc
 
 RUN chmod +x /autoserve_entrypoint.bash
 

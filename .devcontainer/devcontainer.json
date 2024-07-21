@@ -1,0 +1,73 @@
+{
+    "name": "AutoServe",
+    "image": "jatinvpatil/autoserve:latest",
+    // "build": {
+    //     "dockerfile": "../autoserve.Dockerfile",
+    //     "context": "..",
+    //     "cacheFrom": "jatinvpatil/autoserve:latest"
+    // },
+    "runArgs": [
+        // "--name=AutoServe",
+        // "--env", "DISPLAY=${env:DISPLAY}",
+        // "--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+        // "--env", "QT_X11_NO_MITSHM=1",
+        // "--env", "XDG_RUNTIME_DIR=/tmp/runtime-docker",
+        // "--cap-add=SYS_PTRACE", // enable debugging, e.g. gdb
+        // "--ipc=host", // shared memory transport with host, e.g. rviz GUIs
+        // "--network=host", // network access to host interfaces, e.g. eth0
+        // "--pid=host", // DDS discovery with host, without --network=host
+        // "--privileged" // device access to host peripherals, e.g. USB
+        // "--security-opt=seccomp=unconfined", // enable debugging, e.g. gdb
+        // "--device", "/dev/snd",
+        // "--gpus", "all"
+
+        "--name=AutoServe",
+        "--env", "DISPLAY=${env:DISPLAY}",
+        "--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+        "--volume=/home/jatin/.Xauthority:/root/.Xauthority",
+        "--env", "QT_X11_NO_MITSHM=1",
+        "--env", "XDG_RUNTIME_DIR=/tmp/runtime-docker",
+        "--ipc=host",
+        "--network=host",
+        "--privileged"
+    ],
+    "workspaceFolder": "/colcon_ws",
+    "workspaceMount": "source=${localWorkspaceFolder},target=${containerWorkspaceFolder}/src,type=bind",
+    "onCreateCommand": "src/.devcontainer/build_command.sh",
+    "updateContentCommand": "src/.devcontainer/build_command.sh",
+    "postCreateCommand": "src/.devcontainer/build_command.sh",
+    // "remoteEnv": {
+    //     "OVERLAY_MIXINS": "release ccache lld",
+    //     "CCACHE_DIR": "/tmp/.ccache"
+    // },
+    // "mounts": [
+    //     {
+    //         "source": "ccache-${devcontainerId}",
+    //         "target": "/tmp/.ccache",
+    //         "type": "volume"
+    //     },
+    //     {
+    //         "source": "overlay-${devcontainerId}",
+    //         "target": "/opt/overlay_ws",
+    //         "type": "volume"
+    //     }
+    // ],
+    // "features": {
+    //     // "ghcr.io/devcontainers/features/desktop-lite:1": {},
+    //     "ghcr.io/devcontainers/features/github-cli:1": {}
+    // },
+    "customizations": {
+        "vscode": {
+            "settings": {},
+            "extensions": [
+                "althack.ament-task-provider",
+                "eamodio.gitlens",
+                "esbenp.prettier-vscode",
+                "GitHub.copilot",
+                "ms-iot.vscode-ros",
+                "streetsidesoftware.code-spell-checker",
+                "twxs.cmake"
+            ]
+        }
+    }
+}
