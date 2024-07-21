@@ -1,39 +1,52 @@
 version: 2.1
-
+executors:
+  docker-publisher:
+    environment:
+      IMAGE_NAME: jonathancardoso/building-on-ci
+    docker:
+      - image: circleci/buildpack-deps:stretch
 jobs:
   build:
-    docker:
-      - image: circleci/buildpack-deps:buster
+    executor: docker-publisher
     steps:
       - checkout
-
+      - setup_remote_docker
       - run:
-          name: Install Docker CLI
+          name: Build Docker image
           command: |
-            curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-            echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
-            sudo apt-get update
-            sudo apt-get install -y docker-ce-cli
-
-      - setup_remote_docker:
-          version: 20.10.7
-
+            docker build -t $IMAGE_NAME:latest -f autoserve.Dockerfile .
       - run:
-          name: Login to Docker Hub
-          command: |
-            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-
+          name: Archive Docker image
+          command: docker save -o image.tar $IMAGE_NAME
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./image.tar
+  publish-latest:
+    executor: docker-publisher
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - setup_remote_docker
       - run:
-          name: Build and push AutoNav
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
+      - run:
+          name: Publish Docker Image to Docker Hub
           command: |
-            docker build -t jatinvpatil/autoserve:latest -f autoserve.Dockerfile .
-            docker push jatinvpatil/autoserve:latest
-
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+            docker push $IMAGE_NAME:latest
 workflows:
-  build-and-deploy:
+  version: 2
+  build-master:
     jobs:
       - build:
           filters:
             branches:
-              only:
-                - main
+              only: master
+      - publish-latest:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
