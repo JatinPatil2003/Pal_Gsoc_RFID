@@ -31,10 +31,10 @@ jobs:
             docker push jatinvpatil/autoserve:latest
 
 workflows:
-  version: 2
   build-and-deploy:
     jobs:
       - build:
-          branches:
-            only:
-              - main
+          filters:
+            branches:
+              only:
+                - main
