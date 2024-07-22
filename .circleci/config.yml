@@ -11,10 +11,15 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
+      - restore_cache:
+          keys:
+            - v1-docker-cache-{{ .Branch }}-{{ checksum "autoserve.Dockerfile" }}
+            - v1-docker-cache-{{ .Branch }}-
+            - v1-docker-cache-
       - run:
           name: Build Docker image
           command: |
-            docker build -t $IMAGE_NAME:latest -f autoserve.Dockerfile .
+            docker build --cache-from $IMAGE_NAME:cache -t $IMAGE_NAME:latest -f autoserve.Dockerfile .
       - run:
           name: Archive Docker image
           command: docker save -o image.tar $IMAGE_NAME
@@ -22,6 +27,11 @@ jobs:
           root: .
           paths:
             - ./image.tar
+      - save_cache:
+          key: v1-docker-cache-{{ .Branch }}-{{ checksum "autoserve.Dockerfile" }}
+          paths:
+            - /tmp/workspace/image.tar
+
   publish-latest:
     executor: docker-publisher
     steps:
@@ -36,6 +46,7 @@ jobs:
           command: |
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
             docker push $IMAGE_NAME:latest
+
 workflows:
   version: 2
   build-master:
