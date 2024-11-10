@@ -1,2 +1,2 @@
 # AutoServe
-Autonomous Waiter Robot
+Autonomous Mobile Robot for hospitality.
