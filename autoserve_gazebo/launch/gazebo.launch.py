@@ -22,18 +22,6 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     autoserve_gazebo_dir = get_package_share_directory("autoserve_gazebo")
-    # autonav_gazebo_dir = get_package_share_directory("autonav_gazebo")
-    gazebo_ros_dir = get_package_share_directory("gazebo_ros")
-    autoserve_description_share = os.path.join(
-        get_package_prefix("autoserve_description"), "share"
-    )
-    gazebo_models_path = os.path.join(autoserve_gazebo_dir, 'models')
-    if 'GAZEBO_MODEL_PATH' in os.environ:
-        os.environ['GAZEBO_MODEL_PATH'] = gazebo_models_path
-    else:
-        os.environ['GAZEBO_MODEL_PATH'] =  gazebo_models_path
-
-    env_var = SetEnvironmentVariable("GAZEBO_MODEL_PATH", autoserve_description_share)
 
     robot_description_content = Command(
         [
@@ -56,44 +44,32 @@ def generate_launch_description():
         parameters=[robot_description],
     )
 
-    world = os.path.join(
+    default_world = os.path.join(
         autoserve_gazebo_dir,
         'worlds',
-        'cafe.world'
-    )
+        'empty.world'
+        )    
 
-    start_gazebo_server = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(gazebo_ros_dir, "launch", "gzserver.launch.py"),
-        ),
-        launch_arguments={'world': world}.items()
-    )
+    # Include the Gazebo launch file, provided by the ros_gz_sim package
+    gazebo = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory('ros_gz_sim'), 'launch', 'gz_sim.launch.py')]),
+                    launch_arguments={'gz_args': ['-r -v4 ', default_world], 'on_exit_shutdown': 'true'}.items()
+             )
 
-    start_gazebo_client = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            os.path.join(gazebo_ros_dir, "launch", "gzclient.launch.py")
-        )
-    )
-
-    spawn_robot = Node(
-        package="gazebo_ros",
-        executable="spawn_entity.py",
-        arguments=[
-            "-entity",
-            "autoserve",
-            "-topic",
-            "robot_description",
-        ],
-        output="screen",
-    )
-
-    delayed_spawner = TimerAction(period=5.0, actions=[spawn_robot])
+    # Run the spawner node from the ros_gz_sim package. The entity name doesn't really matter if you only have a single robot.
+    spawn_entity = Node(package='ros_gz_sim', executable='create',
+                        arguments=['-topic', 'robot_description',
+                                   '-name', 'my_bot',
+                                   '-z', '0.1'],
+                        output='screen')
+    
+    delayed_spawner = TimerAction(period=5.0, actions=[spawn_entity])
 
     return LaunchDescription(
         [
-            env_var,
-            start_gazebo_server,
-            start_gazebo_client,
+            gazebo,
+            spawn_entity,
             robot_state_publisher_node,
             delayed_spawner,
         ]
