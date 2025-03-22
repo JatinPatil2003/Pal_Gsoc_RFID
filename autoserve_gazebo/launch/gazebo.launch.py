@@ -47,7 +47,7 @@ def generate_launch_description():
     default_world = os.path.join(
         autoserve_gazebo_dir,
         'worlds',
-        'empty.world'
+        'cafe_harmonic.world'
         )    
 
     # Include the Gazebo launch file, provided by the ros_gz_sim package
@@ -69,7 +69,6 @@ def generate_launch_description():
     return LaunchDescription(
         [
             gazebo,
-            spawn_entity,
             robot_state_publisher_node,
             delayed_spawner,
         ]

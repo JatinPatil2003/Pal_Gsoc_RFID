@@ -88,29 +88,24 @@
     </plugin>
   </gazebo> -->
 
-  <!-- <gazebo>
-    <plugin name="diff_drive_control" filename="libgazebo_ros_diff_drive.so">
-
-      <update_rate>50</update_rate>
-
-      <left_joint>base2leftw</left_joint>
-      <right_joint>base2rightw</right_joint>
-
-      <wheel_separation>0.34</wheel_separation>
-      <wheel_diameter>0.1</wheel_diameter>
-
-      <command_topic>cmd_vel</command_topic>
-
-      <publish_odom>true</publish_odom>
-      <publish_odom_tf>true</publish_odom_tf>
-      <publish_wheel_tf>true</publish_wheel_tf>
-
-      <odometry_topic>odom</odometry_topic>
-      <odometry_frame>odom</odometry_frame>
-      <robot_base_frame>base_footprint</robot_base_frame>
-
-    </plugin>
-  </gazebo> -->
+  <gazebo>
+    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+    <!-- Remove <ros> tag. -->
+    <!-- wheels -->
+    <left_joint>base2leftw</left_joint>
+    <right_joint>base2rightw</right_joint>
+    <!-- kinematics -->
+    <wheel_separation>0.34</wheel_separation>
+    <wheel_radius>0.05</wheel_radius> <!-- computed from <wheel_diameter> in the original plugin-->
+    <!-- limits -->
+    <topic>cmd_vel</topic> <!-- from <commant_topic> -->
+    <odom_topic>odom</odom_topic> <!-- from <odometry_topic> -->
+    <frame_id>odom</frame_id> <!-- from <odometry_frame> -->
+    <child_frame_id>base_footprint</child_frame_id> <!-- from <robot_base_frame> -->
+    <odom_publisher_frequency>30</odom_publisher_frequency> <!-- from <update_rate>-->
+    <tf_topic>/tf</tf_topic> <!-- Short topic name for tf output -->
+  </plugin>
+  </gazebo>
 
   <!-- <gazebo reference="imu">
     <gravity>true</gravity>
