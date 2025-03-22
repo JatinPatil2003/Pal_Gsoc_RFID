@@ -82,9 +82,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -121,9 +121,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -160,9 +160,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -199,9 +199,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -244,9 +244,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -283,9 +283,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -322,9 +322,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -361,9 +361,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -400,9 +400,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -439,9 +439,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -478,9 +478,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -517,9 +517,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -582,9 +582,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -627,9 +627,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -652,9 +652,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -691,9 +691,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -730,9 +730,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -769,9 +769,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -808,9 +808,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -847,9 +847,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -886,9 +886,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -951,9 +951,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -996,9 +996,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1041,9 +1041,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1086,9 +1086,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1131,9 +1131,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1176,9 +1176,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1221,9 +1221,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1266,9 +1266,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1311,9 +1311,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1356,9 +1356,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1401,9 +1401,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1446,9 +1446,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1491,9 +1491,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1536,9 +1536,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1581,9 +1581,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1626,9 +1626,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Bricks</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1671,9 +1671,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1716,9 +1716,9 @@
           <material>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Wood</name>
+              <name>Gazebo/Grey</name>
             </script>
-            <ambient>1 1 1 1</ambient>
+            
           </material>
           <meta>
             <layer>0</layer>
@@ -1734,7 +1734,85 @@
 
     <include>
       <name>table_1</name>
-      <pose>1.0 0 0 0 0 0</pose>
+      <pose>0.031788 2.42607 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_2</name>
+      <pose>0.036683 4.7564 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_3</name>
+      <pose>-1.0043 -4.0062 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_4</name>
+      <pose>-1.91078 -4.00594 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_5</name>
+      <pose>-2.82042 -4.00732 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_6</name>
+      <pose>-3.72866 -4.00874 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_7</name>
+      <pose>-4.44319 4.17331 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_8</name>
+      <pose>-3.53545 4.17574 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_9</name>
+      <pose>-4.44319 3.26349 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_10</name>
+      <pose>-3.52958 3.26151 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_11</name>
+      <pose>-8.09464 4.12143 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_12</name>
+      <pose>-8.0968 3.21095 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_13</name>
+      <pose>-8.49092 -1.43104 0 0 -0 0</pose>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
+    </include>
+
+    <include>
+      <name>table_14</name>
+      <pose>-8.47981 -3.41162 0 0 -0 0</pose>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Cafe Table</uri>
     </include>
 
