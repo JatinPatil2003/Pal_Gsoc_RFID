@@ -60,15 +60,15 @@ void DummySensorSystem::PreUpdate(const gz::sim::UpdateInfo &,
         // Default to scoped name as topic
         if (data.Topic().empty())
         {
-          std::string topic = scopedName(_entity, _ecm) + "/odometer";
+          std::string topic = "/dummy_sensor";
           data.SetTopic(topic);
         }
 
         gz::sensors::SensorFactory sensorFactory;
-        auto sensor = sensorFactory.CreateSensor<custom::Odometer>(data);
+        auto sensor = sensorFactory.CreateSensor<custom::DummySensor>(data);
         if (nullptr == sensor)
         {
-          gzerr << "Failed to create odometer [" << sensorScopedName << "]"
+          gzerr << "Failed to create dummy_sensor [" << sensorScopedName << "]"
                  << std::endl;
           return false;
         }
@@ -129,7 +129,7 @@ void DummySensorSystem::RemoveSensorEntities(
       {
         if (this->entitySensorMap.erase(_entity) == 0)
         {
-          gzerr << "Internal error, missing odometer for entity ["
+          gzerr << "Internal error, missing dummy_sensor for entity ["
                          << _entity << "]" << std::endl;
         }
         return true;

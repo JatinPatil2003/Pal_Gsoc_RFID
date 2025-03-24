@@ -98,13 +98,6 @@
           </gz:dummysensor>
         </sensor>
       </link>
-
-      <!-- Use the velocity control plugin to give it some initial velocity -->
-      <plugin
-        filename="gz-sim-velocity-control-system"
-        name="gz::sim::systems::VelocityControl">
-        <initial_linear>0.2 0 0</initial_linear>
-      </plugin>
     </model>
 
   </world>

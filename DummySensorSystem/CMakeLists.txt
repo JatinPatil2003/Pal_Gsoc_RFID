@@ -1,29 +1,42 @@
 cmake_minimum_required(VERSION 3.8)
-project(dummy_sensor)
+project(DummySensorSystem)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
 
 find_package(gz-cmake3 REQUIRED)
+gz_find_package(gz-plugin2 REQUIRED COMPONENTS register)
+set(GZ_PLUGIN_VER ${gz-plugin2_VERSION_MAJOR})
+
+gz_find_package(gz-sim8 REQUIRED)
+set(GZ_SIM_VER ${gz-sim8_VERSION_MAJOR})
+
 find_package(gz-sensors8 REQUIRED)
+set(GZ_SENSORS_VER ${gz-sensors8_VERSION_MAJOR})
 
-include_directories(include)
+# Include the include directory
+include_directories(include/${PROJECT_NAME})
 
-add_library(${PROJECT_NAME} SHARED src/DummySensor.cc)
+# Add library
+add_library(${PROJECT_NAME} SHARED src/${PROJECT_NAME}.cc)
+
 target_link_libraries(${PROJECT_NAME}
-  PUBLIC gz-sensors8::gz-sensors8)
+  PRIVATE
+    gz-plugin${GZ_PLUGIN_VER}::gz-plugin${GZ_PLUGIN_VER}
+    gz-sim${GZ_SIM_VER}::gz-sim${GZ_SIM_VER}
+    gz-sensors${GZ_SENSORS_VER}::gz-sensors${GZ_SENSORS_VER}
+)
+
+target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 install(
   TARGETS ${PROJECT_NAME}
   DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
 )
+
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -38,3 +51,4 @@ if(BUILD_TESTING)
 endif()
 
 ament_package()
+    
