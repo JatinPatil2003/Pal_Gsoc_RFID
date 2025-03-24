@@ -32,14 +32,13 @@ namespace custom
     /// \return True if loading was successful
     public: virtual bool Load(const sdf::Sensor &_sdf) override;
 
+    public: virtual bool Load(sdf::ElementPtr _sdf) override;
+
     /// \brief Update the sensor and generate data
     /// \param[in] _now The current time
     /// \return True if the update was successfull
     public: virtual bool Update(
       const std::chrono::steady_clock::duration &_now) override;
-
-    /// \brief Noise that will be applied to the sensor data
-    private: gz::sensors::NoisePtr noise{nullptr};
 
     /// \brief Node for communication
     private: gz::transport::Node node;

@@ -26,10 +26,10 @@
       filename="gz-sim-contact-system"
       name="gz::sim::systems::Contact">
     </plugin>
-    <!-- <plugin
-      filename="OdometerSystem"
-      name="custom::OdometerSystem">
-    </plugin> -->
+    <plugin
+      filename="DummySensorSystem"
+      name="custom::DummySensorSystem">
+    </plugin>
 
     <light type="directional" name="sun">
       <cast_shadows>true</cast_shadows>
@@ -1735,26 +1735,6 @@
       </link>
       <static>1</static>
     </model>
-
-    <!-- <model name="sensor_model">
-        <sensor name="an_odometer" type="custom" gz:type="odometer">
-          <always_on>1</always_on>
-          <update_rate>30</update_rate>
-          <visualize>true</visualize>
-          <gz:odometer>
-            <noise type="gaussian">
-              <mean>0.00001</mean>
-              <stddev>0.00001</stddev>
-            </noise>
-          </gz:odometer>
-        </sensor>
-      </link>
-      <plugin
-        filename="gz-sim-velocity-control-system"
-        name="gz::sim::systems::VelocityControl">
-        <initial_linear>0.2 0 0</initial_linear>
-      </plugin>
-    </model> -->
 
 
     <include>

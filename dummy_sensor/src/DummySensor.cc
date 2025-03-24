@@ -55,6 +55,13 @@ bool DummySensor::Load(const sdf::Sensor &_sdf)
   return true;
 }
 
+bool DummySensor::Load(sdf::ElementPtr _sdf)
+{
+  sdf::Sensor sdfSensor;
+  sdfSensor.Load(_sdf);
+  return this->Load(sdfSensor);
+}
+
 //////////////////////////////////////////////////
 bool DummySensor::Update(const std::chrono::steady_clock::duration &_now)
 {
