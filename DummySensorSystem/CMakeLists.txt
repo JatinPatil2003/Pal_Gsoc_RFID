@@ -19,23 +19,28 @@ set(GZ_SENSORS_VER ${gz-sensors8_VERSION_MAJOR})
 
 find_package(dummy_sensor REQUIRED)
 
-if(dummy_sensor_FOUND)
-  message(STATUS "dummy_sensor found: ${dummy_sensor_INCLUDE_DIRS}")
-else()
-  message(FATAL_ERROR "dummy_sensor not found!")
-endif()
+message(STATUS "dummy_sensor include dirs: ${dummy_sensor_INCLUDE_DIRS}")
+
+message(STATUS "dummy_sensor libraries: ${dummy_sensor_LIBRARIES}")
+
+message(STATUS "dummy_sensor library dirs: ${dummy_sensor_LIBRARY_DIRS}")
+
+message(STATUS "dummy_sensor package location: ${dummy_sensor_DIR}")
+
 
 # Include the include directory
 include_directories(include/${PROJECT_NAME} ${dummy_sensor_INCLUDE_DIRS})
 
 # Add library
 add_library(${PROJECT_NAME} SHARED src/${PROJECT_NAME}.cc)
+# target_link_libraries(DummySensorSystem PRIVATE dummy_sensor)
 
-ament_target_dependencies(${PROJECT_NAME}
-  "gz-plugin${GZ_PLUGIN_VER}"
-  "gz-sim${GZ_SIM_VER}"
-  "gz-sensors${GZ_SENSORS_VER}"
-  "dummy_sensor"
+target_link_libraries(${PROJECT_NAME}
+  PRIVATE
+    gz-plugin${GZ_PLUGIN_VER}::gz-plugin${GZ_PLUGIN_VER}
+    gz-sim${GZ_SIM_VER}::gz-sim${GZ_SIM_VER}
+    gz-sensors${GZ_SENSORS_VER}::gz-sensors${GZ_SENSORS_VER}
+    ${dummy_sensor_LIBRARIES}
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -47,7 +52,7 @@ message(STATUS "Linking libraries: ${PROJECT_NAME} -> dummy_sensor")
 
 install(
   TARGETS ${PROJECT_NAME}
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+  DESTINATION ${PROJECT_NAME}/lib
 )
 
 

@@ -14,7 +14,7 @@ find_package(ament_cmake REQUIRED)
 find_package(gz-cmake3 REQUIRED)
 find_package(gz-sensors8 REQUIRED)
 
-include_directories(include)
+include_directories(include/${PROJECT_NAME})
 
 add_library(${PROJECT_NAME} SHARED src/DummySensor.cc)
 target_link_libraries(${PROJECT_NAME}
@@ -22,22 +22,24 @@ target_link_libraries(${PROJECT_NAME}
 
 install(
   TARGETS ${PROJECT_NAME}
-  DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+  DESTINATION ${PROJECT_NAME}/lib
 )
-
-
-# Install targets
-install(
-  TARGETS ${PROJECT_NAME}
-  EXPORT ${PROJECT_NAME}Targets
-  LIBRARY DESTINATION lib
-)
-
 
 install(
   DIRECTORY include/
   DESTINATION include
 )
+
+install(
+  TARGETS dummy_sensor
+  EXPORT dummy_sensorTargets
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+
+ament_export_libraries(dummy_sensor)
+ament_export_include_directories(include)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -50,10 +52,5 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
-ament_export_include_directories("include")  # This ensures find_package picks it up
-ament_export_libraries(${PROJECT_NAME})
-ament_export_targets(${PROJECT_NAME}Targets HAS_LIBRARY_TARGET)
-
 
 ament_package()

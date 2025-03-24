@@ -36,7 +36,7 @@
 #include <gz/sim/EntityComponentManager.hh>
 #include <gz/sim/Util.hh>
 
-#include "DummySensor.hh"
+#include "dummy_sensor/DummySensor.hh"
 #include "DummySensorSystem.hh"
 
 using namespace custom;
