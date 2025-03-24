@@ -64,12 +64,24 @@ def generate_launch_description():
                                    '-z', '0.1'],
                         output='screen')
     
-    delayed_spawner = TimerAction(period=5.0, actions=[spawn_entity])
+    delayed_spawner = TimerAction(period=10.0, actions=[spawn_entity])
+
+    bridge_params = os.path.join(autoserve_gazebo_dir, 'config', 'gz_bridge.yaml')
+    ros_gz_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            '--ros-args',
+            '-p',
+            f'config_file:={bridge_params}',
+        ]
+    )
 
     return LaunchDescription(
         [
             gazebo,
             robot_state_publisher_node,
             delayed_spawner,
+            ros_gz_bridge,
         ]
     )
