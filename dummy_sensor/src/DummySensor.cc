@@ -28,13 +28,9 @@
 
 using namespace custom;
 
-//////////////////////////////////////////////////
+
 bool DummySensor::Load(const sdf::Sensor &_sdf)
 {
-
-  gzerr << "Loading........................" << std::endl;
-
-
   auto type = gz::sensors::customType(_sdf);
   if ("dummysensor" != type)
   {
@@ -55,25 +51,7 @@ bool DummySensor::Load(const sdf::Sensor &_sdf)
            << std::endl;
     return true;
   }
-
-  // Load custom sensor params
-  auto customElem = _sdf.Element()->GetElement("gz:dummysensor");
-
-  if (!customElem->HasElement("noise"))
-  {
-    gzdbg << "No noise for [" << this->Topic() << "]" << std::endl;
-    return true;
-  }
-
-  sdf::Noise noiseSdf;
-  noiseSdf.Load(customElem->GetElement("noise"));
-  this->noise = gz::sensors::NoiseFactory::NewNoiseModel(noiseSdf);
-  if (nullptr == this->noise)
-  {
-    gzerr << "Failed to load noise." << std::endl;
-    return false;
-  }
-
+  gzdbg << "DummySensor Loaded!!" << std::endl;
   return true;
 }
 
@@ -87,7 +65,7 @@ bool DummySensor::Update(const std::chrono::steady_clock::duration &_now)
   frame->set_key("frame_id");
   frame->add_value(this->Name());
 
-  msg.set_data("HelloWorld");
+  msg.set_data("Hello World!");
 
   this->AddSequence(msg.mutable_header());
   this->pub.Publish(msg);

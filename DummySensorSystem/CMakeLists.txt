@@ -52,7 +52,7 @@ message(STATUS "Linking libraries: ${PROJECT_NAME} -> dummy_sensor")
 
 install(
   TARGETS ${PROJECT_NAME}
-  DESTINATION ${PROJECT_NAME}/lib
+  DESTINATION lib
 )
 
 
