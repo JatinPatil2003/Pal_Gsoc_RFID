@@ -21,6 +21,8 @@
 #include <gz/sensors/Sensor.hh>
 #include <gz/transport/Node.hh>
 
+#include"DummySensor.hh"
+
 namespace custom
 {
   /// \brief Example showing how to tie a custom sensor, in this case an
@@ -30,6 +32,7 @@ namespace custom
     public gz::sim::ISystemPreUpdate,
     public gz::sim::ISystemPostUpdate
   {
+    public: virtual ~DummySensorSystem() = default; 
     // Documentation inherited.
     // During PreUpdate, check for new sensors that were inserted
     // into simulation and create more components as needed.

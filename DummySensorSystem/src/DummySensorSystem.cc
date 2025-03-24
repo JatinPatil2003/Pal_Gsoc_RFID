@@ -51,9 +51,12 @@ void DummySensorSystem::PreUpdate(const gz::sim::UpdateInfo &,
         const gz::sim::components::CustomSensor *_custom,
         const gz::sim::components::ParentEntity *_parent)->bool
       {
+        gzerr << "Here!!!!!!!!!!!!!!!!!" << std::endl;
         // Get sensor's scoped name without the world
         auto sensorScopedName = gz::sim::removeParentScope(
             gz::sim::scopedName(_entity, _ecm, "::", false), "::");
+
+        gzerr << "Here" << sensorScopedName << std::endl;
         sdf::Sensor data = _custom->Data();
         data.SetName(sensorScopedName);
 
@@ -99,9 +102,6 @@ void DummySensorSystem::PostUpdate(const gz::sim::UpdateInfo &_info,
   {
     for (auto &[entity, sensor] : this->entitySensorMap)
     {
-      sensor->NewPosition(gz::sim::worldPose(entity, _ecm).Pos());
-      // Call base Sensor class' Update function with force = false
-      // to make the sensor respect the specified update rate.
       auto baseSensor = std::dynamic_pointer_cast<gz::sensors::Sensor>(sensor);
       if (baseSensor)
       {

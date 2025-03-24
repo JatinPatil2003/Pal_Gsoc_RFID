@@ -17,20 +17,33 @@ set(GZ_SIM_VER ${gz-sim8_VERSION_MAJOR})
 find_package(gz-sensors8 REQUIRED)
 set(GZ_SENSORS_VER ${gz-sensors8_VERSION_MAJOR})
 
+find_package(dummy_sensor REQUIRED)
+
+if(dummy_sensor_FOUND)
+  message(STATUS "dummy_sensor found: ${dummy_sensor_INCLUDE_DIRS}")
+else()
+  message(FATAL_ERROR "dummy_sensor not found!")
+endif()
+
 # Include the include directory
-include_directories(include/${PROJECT_NAME})
+include_directories(include/${PROJECT_NAME} ${dummy_sensor_INCLUDE_DIRS})
 
 # Add library
 add_library(${PROJECT_NAME} SHARED src/${PROJECT_NAME}.cc)
 
-target_link_libraries(${PROJECT_NAME}
-  PRIVATE
-    gz-plugin${GZ_PLUGIN_VER}::gz-plugin${GZ_PLUGIN_VER}
-    gz-sim${GZ_SIM_VER}::gz-sim${GZ_SIM_VER}
-    gz-sensors${GZ_SENSORS_VER}::gz-sensors${GZ_SENSORS_VER}
+ament_target_dependencies(${PROJECT_NAME}
+  "gz-plugin${GZ_PLUGIN_VER}"
+  "gz-sim${GZ_SIM_VER}"
+  "gz-sensors${GZ_SENSORS_VER}"
+  "dummy_sensor"
 )
 
-target_include_directories(${PROJECT_NAME} PUBLIC include)
+target_include_directories(${PROJECT_NAME} PUBLIC
+  include
+  ${dummy_sensor_INCLUDE_DIRS}
+)
+
+message(STATUS "Linking libraries: ${PROJECT_NAME} -> dummy_sensor")
 
 install(
   TARGETS ${PROJECT_NAME}

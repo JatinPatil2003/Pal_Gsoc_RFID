@@ -31,6 +31,10 @@ using namespace custom;
 //////////////////////////////////////////////////
 bool DummySensor::Load(const sdf::Sensor &_sdf)
 {
+
+  gzerr << "Loading........................" << std::endl;
+
+
   auto type = gz::sensors::customType(_sdf);
   if ("dummysensor" != type)
   {
