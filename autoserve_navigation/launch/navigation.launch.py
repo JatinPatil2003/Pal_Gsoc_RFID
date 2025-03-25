@@ -10,7 +10,7 @@ from launch.conditions import IfCondition
 from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
 
-MAP_NAME='cafe_3d' #change to the name of your own map here
+MAP_NAME='cafe' #change to the name of your own map here
 
 # MAP_NAME=input("Map name: ")
 
@@ -30,10 +30,6 @@ def generate_launch_description():
 
     nav2_config_path = PathJoinSubstitution(
         [FindPackageShare('autoserve_navigation'), 'config', 'navigation.yaml']
-    )
-
-    autoserve_3dmapping_path = PathJoinSubstitution(
-        [FindPackageShare('autoserve_3dmapping'), 'launch', 'octomap2gridmap.launch.py']
     )
 
     return LaunchDescription([
@@ -72,9 +68,5 @@ def generate_launch_description():
             arguments=['-d', rviz_config_path],
             condition=IfCondition(LaunchConfiguration("rviz")),
             parameters=[{'use_sim_time': LaunchConfiguration("sim")}]
-        ),
-
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(autoserve_3dmapping_path),
         ),
     ])
